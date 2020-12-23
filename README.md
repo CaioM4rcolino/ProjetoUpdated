@@ -11,7 +11,7 @@ ENDPOINTS:
 
 **Título**          | **Listar, inserir clientes no sistema**
 --------------------|-
-URL                 | /clientes 
+Endpoint            | /clientes 
 Método              | POST, GET
 Resposta de sucesso | Código: 200 Retorna o JSON com os dados do cliente
 Resposta de erro    | Código: 400 Bad Request
@@ -21,7 +21,7 @@ Resposta de erro    | Código: 415 {"status":"Fail", "Message":"Erro no Content-
 
 **Título**          | **Atualizar e excluir clientes no sistema**
 --------------------|-
-URL                 | /clientes/{id}
+Endpoint            | /clientes/{id}
 Método              | PUT, DELETE
 Resposta de sucesso | (PUT): Código 200 - Retorna o JSON com os dados atualizados
 Resposta de sucesso | (DELETE): Código 200   { "status":"Sucesso", "message":"Contato deletado com sucesso." }
@@ -41,7 +41,7 @@ quanto é cobrado por hora, quantas vagas, disponíveis e se há um desconto atr
 
 **Título**          | **Buscar, inserir e atualizar um registro no sistema**
 --------------------|-
-URL                 | /registro/
+Endpoint            | /registro/
 Método              | GET, POST, PUT
 Resposta de sucesso | Código 200 - Retorna o JSON com os dados do registro
 Resposta de erro    | (GET) Código 400 Bad Request
@@ -61,9 +61,20 @@ Resposta de sucesso | (DELETE) Código 200 -  {"status":"Sucesso","Message":"Reg
 Resposta de erro    | (DELETE): Código: 400   {"status":"Falha","message":"Erro ao deletar o registro no no banco de dados. }
 
 
+~~~
+*Relatórios: Exibem quantos clientes a empresa recebeu 
+em um determinado dia, mês, ou ano; 
+Retorna-se a quantidade de clientes, a data e o valor total ganho
+~~~
 
-*Relatórios: Exibem quantos clientes a empresa recebeu em um determinado dia, mês, ou ano; Retorna-se a quantidade de clientes, a data e o valor total ganho
+**Título**          | **Buscar, inserir e atualizar um registro no sistema**
+--------------------|-
+Endpoint            | /relatorios/{tipo}
+Método              | GET
+Resposta de sucesso | Código 200 -  {"status":"Sucess", "clientes": [{...}], "relatorio":[{...}]}
+Resposta de erro    | Código 400 - {"status":"Fail", "Message":"Falha ao trazer o relatório diário." }
 
-'/relatorios/{tipo}' - PARA MÉTODO GET
 
+~~~
 {tipo} -- 'diario', 'mensal', 'anual'
+~~~
